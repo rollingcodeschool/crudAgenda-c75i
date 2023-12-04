@@ -48,4 +48,14 @@ export default class Contacto {
   set telefono(nuevoTelefono) {
     this.#telefono = nuevoTelefono;
   }
+
+  toJSON() {
+    return {
+      nombre: this.nombre,
+      apellido: this.apellido,
+      id: this.id,
+      email: this.email,
+      telefono: this.telefono,
+    };
+  }
 }
