@@ -6,7 +6,7 @@ const nombre = document.querySelector("#nombre"),
   apellido = document.querySelector("#apellido"),
   email = document.querySelector("#email"),
   telefono = document.querySelector("#telefono");
-  const agenda = []
+  const agenda = JSON.parse(localStorage.getItem('agendaKey')) || [];
 
 //funciones
 const crearContacto = (e) => {
