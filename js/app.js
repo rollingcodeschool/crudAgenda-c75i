@@ -33,5 +33,29 @@ const guardarEnLocalstorage = ()=>{
     localStorage.setItem('agendaKey', JSON.stringify(agenda));
 }
 
+const dibujarFila = (contacto)=>{
+  const tablaContactos = document.getElementById('tablaContacto');
+  tablaContactos.innerHTML += `<tr>
+  <th scope="row">1</th>
+  <td>${contacto.nombre}</td>
+  <td>${contacto.apellido}</td>
+  <td>${contacto.email}</td>
+  <td>${contacto.telefono}</td>
+  <td>
+    <a class="btn btn-primary" href="./pages/detalleContacto.html">Ver mas</a>
+    <button class="btn btn-warning">Editar</button>
+    <button class="btn btn-danger">Borrar</button>
+  </td>
+</tr>`
+}
+
+const cargaInicial = () =>{
+  //preguntar si la agenda tiene elementos
+  if(agenda.length > 0){
+    agenda.map((itemContacto)=> dibujarFila(itemContacto))
+  }
+}
 //resto de la logica
 formularioContacto.addEventListener("submit", crearContacto);
+
+cargaInicial();
