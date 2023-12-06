@@ -23,6 +23,8 @@ const crearContacto = (e) => {
    limpiarFormularioContacto();
   //guardar el array en el localstorage JSON
   guardarEnLocalstorage();
+  //dibujar una fila en la tabla
+  dibujarFila(nuevoContacto, agenda.length);
 };
 
 const limpiarFormularioContacto = ()=>{
@@ -33,10 +35,10 @@ const guardarEnLocalstorage = ()=>{
     localStorage.setItem('agendaKey', JSON.stringify(agenda));
 }
 
-const dibujarFila = (contacto)=>{
+const dibujarFila = (contacto, numeroFila)=>{
   const tablaContactos = document.getElementById('tablaContacto');
   tablaContactos.innerHTML += `<tr>
-  <th scope="row">1</th>
+  <th scope="row">${numeroFila}</th>
   <td>${contacto.nombre}</td>
   <td>${contacto.apellido}</td>
   <td>${contacto.email}</td>
@@ -52,7 +54,7 @@ const dibujarFila = (contacto)=>{
 const cargaInicial = () =>{
   //preguntar si la agenda tiene elementos
   if(agenda.length > 0){
-    agenda.map((itemContacto)=> dibujarFila(itemContacto))
+    agenda.map((itemContacto, posicionContacto)=> dibujarFila(itemContacto, posicionContacto + 1))
   }
 }
 //resto de la logica
