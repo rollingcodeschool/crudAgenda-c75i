@@ -68,6 +68,9 @@ window.borrarContacto =(idContacto)=>{
   //actualizar localstorage
   guardarEnLocalstorage()
   //borrar la fila de la tabla
+  const tablaContactos = document.getElementById('tablaContacto');
+  tablaContactos.innerHTML = '';
+  cargaInicial();
 }
 
 //resto de la logica
