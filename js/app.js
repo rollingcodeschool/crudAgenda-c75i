@@ -46,7 +46,7 @@ const dibujarFila = (contacto, numeroFila)=>{
   <td>
     <a class="btn btn-primary" href="./pages/detalleContacto.html">Ver mas</a>
     <button class="btn btn-warning">Editar</button>
-    <button class="btn btn-danger">Borrar</button>
+    <button class="btn btn-danger" onclick="borrarContacto('${contacto.id}')">Borrar</button>
   </td>
 </tr>`
 }
@@ -57,6 +57,19 @@ const cargaInicial = () =>{
     agenda.map((itemContacto, posicionContacto)=> dibujarFila(itemContacto, posicionContacto + 1))
   }
 }
+
+window.borrarContacto =(idContacto)=>{
+  console.log(idContacto);
+ //buscar la posicion del elemento en el array findIndex
+ const posicionContactoBuscado = agenda.findIndex((itemContacto) => itemContacto.id === idContacto );
+ console.log(posicionContactoBuscado);
+  //borrar el contacto de la agenda usando splice(posicion, cant de elementos a borrar)
+  agenda.splice(posicionContactoBuscado, 1)
+  //actualizar localstorage
+  guardarEnLocalstorage()
+  //borrar la fila de la tabla
+}
+
 //resto de la logica
 formularioContacto.addEventListener("submit", crearContacto);
 
