@@ -44,7 +44,7 @@ const dibujarFila = (contacto, numeroFila)=>{
   <td>${contacto.email}</td>
   <td>${contacto.telefono}</td>
   <td>
-    <a class="btn btn-primary" href="./pages/detalleContacto.html">Ver mas</a>
+    <button class="btn btn-primary" onclick="detalleContacto('${contacto.id}')">Ver mas</button>
     <button class="btn btn-warning">Editar</button>
     <button class="btn btn-danger" onclick="borrarContacto('${contacto.id}')">Borrar</button>
   </td>
@@ -71,6 +71,11 @@ window.borrarContacto =(idContacto)=>{
   const tablaContactos = document.getElementById('tablaContacto');
   tablaContactos.innerHTML = '';
   cargaInicial();
+}
+
+window.detalleContacto = (idContacto)=>{
+  console.log(window.location)
+  window.location.href = window.location.origin +'/pages/detalleContacto.html?id='+idContacto;
 }
 
 //resto de la logica
