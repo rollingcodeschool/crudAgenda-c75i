@@ -35,6 +35,12 @@ const crearContacto = (e) => {
     guardarEnLocalstorage();
     //dibujar una fila en la tabla
     dibujarFila(nuevoContacto, agenda.length);
+    
+    Swal.fire({
+      title: "Contacto creado",
+      text: `El contacto ${nuevoContacto.nombre}, ${nuevoContacto.apellido} fue creado exitosamente`,
+      icon: "success"
+    });
   } else {
     alert("hay errores en los datos del formulario");
   }
