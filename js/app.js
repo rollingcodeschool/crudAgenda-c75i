@@ -15,7 +15,11 @@ const crearContacto = (e) => {
   //en el evento submit
   //preventDefault
   //tomo los datos de los inputs (validar)
-  if (validarCantidadCaracteres(nombre.value, 3, 25) && validarCantidadCaracteres(apellido.value, 2, 35)) {
+  if (
+    validarCantidadCaracteres(nombre.value, 3, 25) &&
+    validarCantidadCaracteres(apellido.value, 2, 35) &&
+    validarEmail(email.value)
+  ) {
     //crear un objeto
     const nuevoContacto = new Contacto(
       nombre.value,
@@ -31,8 +35,8 @@ const crearContacto = (e) => {
     guardarEnLocalstorage();
     //dibujar una fila en la tabla
     dibujarFila(nuevoContacto, agenda.length);
-  }else{
-    alert('hay errores en los datos del formulario')
+  } else {
+    alert("hay errores en los datos del formulario");
   }
 };
 
@@ -98,6 +102,16 @@ const validarCantidadCaracteres = (texto, min, max) => {
     return true;
   } else {
     // inputNombre.className = 'form-control is-valid'
+    return false;
+  }
+};
+
+const validarEmail = (texto) => {
+  const patron =
+    /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
+  if (patron.test(texto)) {
+    return true;
+  } else {
     return false;
   }
 };
